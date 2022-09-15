@@ -28,7 +28,7 @@ describe('Github login sample test', () => {
 
     //click password and enter the password 
     await page.locator('input[name="password"]').click();
-    await page.fill('input[name="password"]', '#####');
+    await page.fill('input[name="password"]', '#####rb');
 
 
     // //click sign in
