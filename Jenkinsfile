@@ -1,13 +1,5 @@
-pipeline {
-   agent any
-   stages {
-      stage('e2e-tests') {
-         steps {
-            // Depends on your language / test framework
-            sh 'cd e2e'
-            sh 'yarn install'
-            sh 'yarn test'
-         }
-      }
+withDockerContainer('mcr.microsoft.com/playwright:v1.25.0-focal') {
+   stage('change directory'){
+      sh 'cd e2e'
    }
 }
