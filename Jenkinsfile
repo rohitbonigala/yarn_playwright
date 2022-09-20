@@ -1,12 +1,11 @@
 pipeline {
-    agent {
-        none
-    }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'cd e2e'
-            }
-        }
-    }
+   agent any
+   stages {
+      stage('e2e-tests') {
+         steps {
+            // Depends on your language / test framework
+            sh 'cd e2e'
+         }
+      }
+   }
 }
