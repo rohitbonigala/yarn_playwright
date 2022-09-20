@@ -1,6 +1,12 @@
-withEnv(['PATH+NODE=/something=/path/to/node/bin']) {
-        stage('Prepare') {
-        sh "npm install -g yarn"
-        sh "yarn install"
-    }
+pipeline {
+   agent { docker { image 'mcr.microsoft.com/playwright:v1.25.0-focal' } }
+   stages {
+      stage('e2e-tests') {
+         steps {
+            // Depends on your language / test framework
+            sh 'npm install'
+            sh 'npm run test'
+         }
+      }
+   }
 }
