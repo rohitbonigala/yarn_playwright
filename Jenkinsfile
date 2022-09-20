@@ -1,11 +1,12 @@
 pipeline {
-   agent { docker { image 'mcr.microsoft.com/playwright:v1.25.0-focal' } }
+   agent any
    stages {
       stage('e2e-tests') {
          steps {
             // Depends on your language / test framework
-            sh 'npm install'
-            sh 'npm run test'
+            sh 'cd e2e'
+            sh 'yarn install'
+            sh 'yarn test'
          }
       }
    }
