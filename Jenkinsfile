@@ -15,7 +15,7 @@ pipeline {
       stage('get inside of the directory and use the node version') {
          steps {
             // Depends on your language / test framework
-            sh ''node --version''
+            sh 'node --version'
          }
       }
       stage('install playwright') {
