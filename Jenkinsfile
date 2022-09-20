@@ -1,11 +1,21 @@
 pipeline {
    agent { docker { image 'mcr.microsoft.com/playwright:v1.25.0-focal' } }
    stages {
-      stage('e2e-tests') {
+      stage('get inside of the directory and use the node version') {
          steps {
             // Depends on your language / test framework
             sh 'cd e2e'
-            sh 'nvm use 14.1.0'
+         }
+      }
+      stage('install playwright') {
+         steps {
+            // Depends on your language / test framework
+            sh 'yarn install'
+         }
+      }
+      stage('run tests') {
+         steps {
+            // Depends on your language / test framework
             sh 'yarn test'
          }
       }
