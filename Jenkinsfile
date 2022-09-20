@@ -1,5 +1,12 @@
-withDockerContainer('mcr.microsoft.com/playwright:v1.25.0-focal') {
-   stage('change directory'){
-      sh 'cd e2e'
+pipeline {
+   agent { docker { image 'mcr.microsoft.com/playwright:v1.25.0-focal' } }
+   stages {
+      stage('e2e-tests') {
+         steps {
+            // Depends on your language / test framework
+            sh 'npm install'
+            sh 'npm run test'
+         }
+      }
    }
 }
