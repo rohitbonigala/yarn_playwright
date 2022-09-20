@@ -1,5 +1,5 @@
 pipeline {
-   agent { docker { image 'mcr.microsoft.com/playwright:v1.25.0-focal' } }
+   agent { docker { image 'mcr.microsoft.com/playwright:v1.10.0-focal' } }
    stages {
       stage('get inside of the directory and use the node version') {
          steps {
