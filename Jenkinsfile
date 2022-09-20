@@ -1,23 +1,17 @@
 pipeline {
-   agent any
-   stages {
-      stage('change directory') {
-         steps {
-            // Depends on your language / test framework
-            sh 'cd e2e'
-         }
-      }
-      stage('install playwright') {
-         steps {
-            // Depends on your language / test framework
-            sh 'yarn install'
-         }
-      }
-      stage('e2e-tests') {
-         steps {
-            // Depends on your language / test framework
-            sh 'yarn test'
-         }
-      }
-   }
+    agent any
+    stages {
+        stage('Many tests') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.17.1'
+                }
+            }
+            steps {
+                sh 'cd e2e'
+                sh 'yarn install'
+                sh 'yarn test'
+            }
+        }
+    }
 }
