@@ -1,11 +1,11 @@
 pipeline {
     agent {
-        docker { image 'node:16.13.1-alpine' }
+        none
     }
     stages {
         stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'cd e2e'
             }
         }
     }
